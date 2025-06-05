@@ -4366,9 +4366,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mcp-template@workspace:.":
+"mcp-openalex@workspace:.":
   version: 0.0.0-use.local
-  resolution: "mcp-template@workspace:."
+  resolution: "mcp-openalex@workspace:."
   dependencies:
     "@biomejs/biome": "npm:^1.9.4"
     "@commitlint/cli": "npm:^19.6.1"

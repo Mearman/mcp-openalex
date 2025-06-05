@@ -4,11 +4,16 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
 import { zodToJsonSchema } from 'zod-to-json-schema';
-import { ExampleToolSchema, exampleTool } from './tools/example.js';
+import { SearchWorksSchema, searchWorks } from './tools/search-works.js';
+import { GetWorkSchema, getWork } from './tools/get-work.js';
+import { SearchAuthorsSchema, searchAuthors } from './tools/search-authors.js';
+import { GetAuthorSchema, getAuthor } from './tools/get-author.js';
+import { SearchInstitutionsSchema, searchInstitutions } from './tools/search-institutions.js';
+import { SearchSourcesSchema, searchSources } from './tools/search-sources.js';
 
 const server = new Server(
 	{
-		name: 'mcp-template',
+		name: 'mcp-openalex',
 		version: '0.1.0',
 	},
 	{
@@ -23,9 +28,35 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 	return {
 		tools: [
 			{
-				name: 'example_tool',
-				description: 'An example tool that echoes back the input',
-				inputSchema: zodToJsonSchema(ExampleToolSchema),
+				name: 'search_works',
+				description: 'Search for scholarly works/publications in OpenAlex',
+				inputSchema: zodToJsonSchema(SearchWorksSchema),
+			},
+			{
+				name: 'get_work',
+				description: 'Get detailed information about a specific work by its OpenAlex ID',
+				inputSchema: zodToJsonSchema(GetWorkSchema),
+			},
+			{
+				name: 'search_authors',
+				description: 'Search for authors in OpenAlex',
+				inputSchema: zodToJsonSchema(SearchAuthorsSchema),
+			},
+			{
+				name: 'get_author',
+				description:
+					'Get detailed information about a specific author by their OpenAlex ID',
+				inputSchema: zodToJsonSchema(GetAuthorSchema),
+			},
+			{
+				name: 'search_institutions',
+				description: 'Search for academic institutions in OpenAlex',
+				inputSchema: zodToJsonSchema(SearchInstitutionsSchema),
+			},
+			{
+				name: 'search_sources',
+				description: 'Search for sources (journals, conferences, repositories) in OpenAlex',
+				inputSchema: zodToJsonSchema(SearchSourcesSchema),
 			},
 		],
 	};
@@ -36,8 +67,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 	const { name, arguments: args } = request.params;
 
 	switch (name) {
-		case 'example_tool':
-			return await exampleTool(args);
+		case 'search_works':
+			return await searchWorks(args);
+		case 'get_work':
+			return await getWork(args);
+		case 'search_authors':
+			return await searchAuthors(args);
+		case 'get_author':
+			return await getAuthor(args);
+		case 'search_institutions':
+			return await searchInstitutions(args);
+		case 'search_sources':
+			return await searchSources(args);
 		default:
 			throw new Error(`Unknown tool: ${name}`);
 	}
