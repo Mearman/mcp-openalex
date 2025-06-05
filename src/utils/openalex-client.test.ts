@@ -1,8 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { fetchFromOpenAlex, OpenAlexError } from './openalex-client.js';
+import { configurableFetch } from './fetch.js';
 
-// Mock fetch globally
-global.fetch = vi.fn();
+// Mock the fetch module
+vi.mock('./fetch.js', () => ({
+	configurableFetch: {
+		fetch: vi.fn(),
+	},
+}));
 
 describe('fetchFromOpenAlex', () => {
 	beforeEach(() => {
@@ -11,14 +16,14 @@ describe('fetchFromOpenAlex', () => {
 
 	it('should fetch data successfully', async () => {
 		const mockData = { results: [], meta: { count: 0 } };
-		(global.fetch as any).mockResolvedValueOnce({
+		(configurableFetch.fetch as any).mockResolvedValueOnce({
 			ok: true,
 			json: async () => mockData,
 		});
 
 		const result = await fetchFromOpenAlex('/works', { search: 'test' });
 		expect(result).toEqual(mockData);
-		expect(global.fetch).toHaveBeenCalledWith(
+		expect(configurableFetch.fetch).toHaveBeenCalledWith(
 			'https://api.openalex.org/works?search=test',
 			expect.objectContaining({
 				headers: expect.objectContaining({
@@ -30,14 +35,14 @@ describe('fetchFromOpenAlex', () => {
 
 	it('should include mailto in URL and User-Agent when provided', async () => {
 		const mockData = { results: [] };
-		(global.fetch as any).mockResolvedValueOnce({
+		(configurableFetch.fetch as any).mockResolvedValueOnce({
 			ok: true,
 			json: async () => mockData,
 		});
 
 		await fetchFromOpenAlex('/authors', {}, { mailto: 'test@example.com' });
 		
-		expect(global.fetch).toHaveBeenCalledWith(
+		expect(configurableFetch.fetch).toHaveBeenCalledWith(
 			'https://api.openalex.org/authors?mailto=test%40example.com',
 			expect.objectContaining({
 				headers: expect.objectContaining({
@@ -48,7 +53,7 @@ describe('fetchFromOpenAlex', () => {
 	});
 
 	it('should throw OpenAlexError on HTTP error', async () => {
-		(global.fetch as any).mockResolvedValueOnce({
+		(configurableFetch.fetch as any).mockResolvedValueOnce({
 			ok: false,
 			status: 404,
 			statusText: 'Not Found',
@@ -59,7 +64,7 @@ describe('fetchFromOpenAlex', () => {
 	});
 
 	it('should handle network errors', async () => {
-		(global.fetch as any).mockRejectedValueOnce(new Error('Network error'));
+		(configurableFetch.fetch as any).mockRejectedValueOnce(new Error('Network error'));
 
 		await expect(fetchFromOpenAlex('/works')).rejects.toThrow(OpenAlexError);
 	});

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { configurableFetch } from './fetch.js';
 
 const BASE_URL = 'https://api.openalex.org';
 
@@ -37,7 +38,7 @@ export async function fetchFromOpenAlex<T>(
 	}
 
 	try {
-		const response = await fetch(url.toString(), {
+		const response = await configurableFetch.fetch(url.toString(), {
 			headers: {
 				'User-Agent': options.mailto ? `mcp-openalex (${options.mailto})` : 'mcp-openalex',
 			},
