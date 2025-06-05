@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Mearman/mcp-openalex/compare/v1.0.0...v1.0.1) (2025-06-05)
+
+
+### Bug Fixes
+
+* update license from MIT to CC BY-NC-SA 4.0 ([54707b0](https://github.com/Mearman/mcp-openalex/commit/54707b054ca8e2f100f7ee4ca31d857a82ed2c4c))
+
 # 1.0.0 (2025-06-05)
 
 
