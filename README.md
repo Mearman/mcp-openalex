@@ -1,7 +1,7 @@
 # MCP OpenAlex
 
 [![npm version](https://img.shields.io/npm/v/mcp-openalex.svg)](https://www.npmjs.com/package/mcp-openalex)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 An MCP (Model Context Protocol) server that provides access to the OpenAlex API for scholarly publications and research data.
 
@@ -184,7 +184,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT © Mearman
+CC BY-NC-SA 4.0 © Joseph Mearman
 
 ## Acknowledgments
 
