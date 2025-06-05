@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { fetchFromOpenAlex } from '../utils/openalex-client.js';
 import { AuthorSchema } from '../types.js';
+import { fetchFromOpenAlex } from '../utils/openalex-client.js';
 
 export const GetAuthorSchema = z.object({
 	id: z.string().describe('OpenAlex author ID (e.g., "A2698986125" or full URL)'),

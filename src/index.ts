@@ -4,12 +4,12 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { z } from 'zod';
 import { zodToJsonSchema } from 'zod-to-json-schema';
-import { SearchWorksSchema, searchWorks } from './tools/search-works.js';
+import { GetAuthorSchema, getAuthor } from './tools/get-author.js';
 import { GetWorkSchema, getWork } from './tools/get-work.js';
 import { SearchAuthorsSchema, searchAuthors } from './tools/search-authors.js';
-import { GetAuthorSchema, getAuthor } from './tools/get-author.js';
 import { SearchInstitutionsSchema, searchInstitutions } from './tools/search-institutions.js';
 import { SearchSourcesSchema, searchSources } from './tools/search-sources.js';
+import { SearchWorksSchema, searchWorks } from './tools/search-works.js';
 
 const server = new Server(
 	{

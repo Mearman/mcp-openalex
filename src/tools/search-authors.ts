@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { fetchFromOpenAlex } from '../utils/openalex-client.js';
 import { AuthorSchema, MetaSchema } from '../types.js';
+import { fetchFromOpenAlex } from '../utils/openalex-client.js';
 
 export const SearchAuthorsSchema = z.object({
 	search: z.string().optional().describe('Search query for authors'),

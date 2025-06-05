@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { fetchFromOpenAlex, OpenAlexError } from './openalex-client.js';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { OpenAlexError, fetchFromOpenAlex } from './openalex-client.js';
 
 // Mock fetch globally
 global.fetch = vi.fn();
@@ -36,7 +36,7 @@ describe('fetchFromOpenAlex', () => {
 		});
 
 		await fetchFromOpenAlex('/authors', {}, { mailto: 'test@example.com' });
-		
+
 		expect(global.fetch).toHaveBeenCalledWith(
 			'https://api.openalex.org/authors?mailto=test%40example.com',
 			expect.objectContaining({

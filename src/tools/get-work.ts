@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { fetchFromOpenAlex } from '../utils/openalex-client.js';
 import { WorkSchema } from '../types.js';
+import { fetchFromOpenAlex } from '../utils/openalex-client.js';
 
 export const GetWorkSchema = z.object({
 	id: z.string().describe('OpenAlex work ID (e.g., "W2741809807" or full URL)'),

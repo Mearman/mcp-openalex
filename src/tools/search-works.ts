@@ -1,6 +1,6 @@
 import { z } from 'zod';
+import { MetaSchema, WorkSchema } from '../types.js';
 import { fetchFromOpenAlex } from '../utils/openalex-client.js';
-import { WorkSchema, MetaSchema } from '../types.js';
 
 export const SearchWorksSchema = z.object({
 	search: z.string().optional().describe('Search query for works'),
