@@ -20,6 +20,28 @@
 * initial MCP TypeScript template setup ([f6ab775](https://github.com/Mearman/mcp-openalex/commit/f6ab77580ef2c3d166b0a65bdbf8ca42f79c51a0))
 * register all OpenAlex tools in MCP server ([f5b22ea](https://github.com/Mearman/mcp-openalex/commit/f5b22ea42638ab061a053ff4a91149548ef13d27))
 
+# 1.0.0 (2025-06-06)
+
+
+### Bug Fixes
+
+* make NPM publishing optional in workflows ([ee1dcd8](https://github.com/Mearman/mcp-openalex/commit/ee1dcd8575fca4f7728fa2f863c9d11f68258264))
+* restore OpenAlex implementation and update to template v2.0.0 ([6512aef](https://github.com/Mearman/mcp-openalex/commit/6512aefbe5dc21f6d8090ff9f6b9fc1a1d7c1624))
+* update package name and repository URL to mcp-template ([83200f0](https://github.com/Mearman/mcp-openalex/commit/83200f05a75c977741c357fe5d6363bd10e9026c))
+* update yarn.lock with template dependencies ([975488f](https://github.com/Mearman/mcp-openalex/commit/975488f6ab01c04b2bbc1e6dbec43aad0d1d3991))
+
+
+### Features
+
+* add configurable fetch pattern ([01c4fbd](https://github.com/Mearman/mcp-openalex/commit/01c4fbde8c840972f4f2be905a624cb379c52eb5))
+* add institution and source search tools ([a0ab2ad](https://github.com/Mearman/mcp-openalex/commit/a0ab2ad887ba4499fed01362e3e9d9b8248a80d9))
+* add OpenAlex API client and TypeScript types ([2cf88e0](https://github.com/Mearman/mcp-openalex/commit/2cf88e03787287566c6bd3efacbe773de1d5ea83))
+* add template source code structure ([855886d](https://github.com/Mearman/mcp-openalex/commit/855886d044358e5f8c24f839fa6c1845a0c64368))
+* implement author search and profile tools ([252f439](https://github.com/Mearman/mcp-openalex/commit/252f43929d72be17e36a14321e400e48a69f52fc))
+* implement works search and retrieval tools ([2d87219](https://github.com/Mearman/mcp-openalex/commit/2d87219950e936d716c65401aa370529489ef79e))
+* initial MCP TypeScript template setup ([f6ab775](https://github.com/Mearman/mcp-openalex/commit/f6ab77580ef2c3d166b0a65bdbf8ca42f79c51a0))
+* register all OpenAlex tools in MCP server ([f5b22ea](https://github.com/Mearman/mcp-openalex/commit/f5b22ea42638ab061a053ff4a91149548ef13d27))
+
 # 1.0.0 (2025-06-05)
 
 
